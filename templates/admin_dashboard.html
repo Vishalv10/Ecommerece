@@ -1,0 +1,89 @@
+{% extends "nav2.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('{% static "images/pexels-shattha-pilabut-135620.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-container {
+        margin-top: 20px;
+        text-align: center;
+        color: #fff; /* Set text color to white for better visibility on the background image */
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    h3 {
+        color: #555;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex; /* Use flexbox for horizontal alignment */
+        justify-content: center; /* Center the items horizontally */
+    }
+
+    li {
+        margin: 0 10px; /* Add some spacing between items */
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        display: flex; /* Use flexbox for horizontal alignment */
+        align-items: center; /* Center items vertically within the flex container */
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .icon {
+        margin-top: 90px;
+        width: 150px;
+        margin-right: 5px;
+    }
+</style>
+
+<div class="dashboard-container">
+    <h2>Welcome, Admin!</h2>
+
+    <div>
+        <h3>Admin Dashboard</h3>
+        <ul>
+            <li>
+                <a href="{% url 'add_category' %}">
+                    <img class="icon" src="{% static 'images/product.png' %}" alt="Add Category"> Add Category
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'add_product' %}">
+                    <img class="icon" src="{% static 'images/product2.jpg' %}" alt="Add Product"> Add Product
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'show_products' %}">
+                    <img class="icon" src="{% static 'images/productsicon.jpg' %}" alt="Show Products"> Show Products
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'user_details' %}">
+                    <img class="icon" src="{% static 'images/user1.png' %}" alt="User Details"> User Details
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

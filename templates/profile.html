@@ -1,0 +1,64 @@
+{% extends "nav1.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #e5f0f0;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        width: 400px;
+        box-sizing: border-box;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #007bff;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    /* Style for the user profile not found message */
+    .profile-not-found {
+        color: #dc3545;
+        font-weight: bold;
+        font-size: 18px;
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <h2>{{ user.username }}</h2>
+        {% if user_profile %}
+            {% comment %} <p><strong>Username:</strong> {{ user.username }}</p> {% endcomment %}
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Contact Number:</strong> {{ user_profile.contact_number }}</p>
+            <p><strong>Address:</strong> {{ user_profile.address }}</p>
+        {% else %}
+            <p class="profile-not-found">User profile not found.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

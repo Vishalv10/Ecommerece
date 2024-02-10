@@ -1,0 +1,39 @@
+{% extends "nav1.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2>{{ category.name }} Products</h2>
+    {% if products %}
+        <div class="card-deck">
+            {% for product in products %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text"><small class="text-muted">Price: ${{ product.price }}</small></p>
+                        <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No products available in this category.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+{% endblock %}
+
+
+
+
+

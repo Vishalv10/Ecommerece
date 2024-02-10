@@ -1,0 +1,92 @@
+<!-- store/templates/store/add_product.html -->
+{% extends "nav2.html" %}  <!-- Assuming you have a base template for admin pages -->
+{% block content %}
+{% load static %}
+
+
+<style>
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('{% static "images/pexels-andrea-piacquadio-3965406.jpg" %}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+
+    margin: 0;
+    padding: 0;
+}
+
+  .container {
+    margin-top: 20px;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+
+</style>
+
+  <div class="container mt-4">
+    <h2>Add Product</h2>
+    <form method="post" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="product_name">Product Name:</label>
+      <input type="text" id="product_name" name="product_name" required>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        {% for category in categories %}
+          <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required>
+
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+
+      <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+  </div>
+{% endblock %}
+
+
+

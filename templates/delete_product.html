@@ -1,0 +1,15 @@
+<!-- store/templates/store/delete_product.html -->
+{% extends "nav2.html" %}  <!-- Assuming you have a base template for admin pages -->
+{% block content %}
+
+  <div class="container mt-4">
+    <h2>Delete Product</h2>
+    <p>Are you sure you want to delete the product '{{ product.name }}'?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, delete it!</button>
+      <a href="{% url 'show_products' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+
+{% endblock %}
